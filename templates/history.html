@@ -1,0 +1,62 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between mb-3">
+    <h3>📊 Search History</h3>
+
+    <a href="/delete_all" class="btn btn-danger"> 🗑️ Delete All </a>
+  </div>
+
+  <div class="card shadow">
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>News</th>
+            <th>Prediction</th>
+            <th>Confidence</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for item in data %}
+
+          <tr>
+            <td>{{ item.id }}</td>
+
+            <td>{{ item.text[:100] }}...</td>
+
+            <td>
+              {% if item.prediction == "FAKE" %}
+              <span class="badge bg-danger">Fake</span>
+              {% else %}
+              <span class="badge bg-success">Real</span>
+              {% endif %}
+            </td>
+
+            <td>{{ item.confidence }}%</td>
+
+            <td>{{ item.date.strftime("%d-%m-%Y") }}</td>
+
+            <td>
+              <a
+                href="/delete/{{item.id}}"
+                class="btn btn-sm btn-danger"
+                onclick="return confirm('Delete this record?');"
+              >
+                Delete
+              </a>
+            </td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

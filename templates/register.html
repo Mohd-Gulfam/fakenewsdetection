@@ -1,0 +1,36 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+<div class="card shadow col-md-4 mx-auto">
+
+<div class="card-body">
+
+<h3 class="text-center">Register</h3>
+
+<form method="POST">
+
+<div class="mb-3">
+<input type="text" name="username" class="form-control" placeholder="Username">
+</div>
+
+<div class="mb-3">
+<input type="password" name="password" class="form-control" placeholder="Password">
+</div>
+
+<button class="btn btn-primary w-100">
+Register
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

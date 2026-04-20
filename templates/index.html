@@ -1,0 +1,106 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<style>
+
+.hero-section{
+background: linear-gradient(120deg,#141e30,#243b55);
+min-height: 90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.main-card{
+max-width:800px;
+width:100%;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.title{
+font-weight:700;
+color:#243b55;
+}
+
+textarea{
+resize:none;
+}
+
+</style>
+
+
+<div class="hero-section">
+
+<div class="card main-card p-4">
+
+<div class="text-center mb-4">
+
+<h2 class="title">📰 Fake News Detection AI</h2>
+
+<p class="text-muted">
+Detect Fake or Real News using Artificial Intelligence
+</p>
+
+</div>
+
+<form method="POST">
+
+<div class="mb-3">
+
+<textarea 
+name="news" 
+class="form-control" 
+rows="5"
+placeholder="Enter news headline or full article..."
+required></textarea>
+
+</div>
+
+<div class="text-center">
+
+<button class="btn btn-primary btn-lg px-4">
+🔍 Check News
+</button>
+
+</div>
+
+</form>
+
+
+{% if prediction %}
+
+<div class="mt-4 text-center">
+
+{% if prediction == "FAKE" %}
+
+<div class="alert alert-danger">
+
+<h4>🚨 Fake News Detected</h4>
+<p>Confidence : {{ confidence }}%</p>
+
+</div>
+
+{% else %}
+
+<div class="alert alert-success">
+
+<h4>✅ Real News</h4>
+<p>Confidence : {{ confidence }}%</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+{% endblock %}
+```
